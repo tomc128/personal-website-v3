@@ -5,6 +5,12 @@ section#hero {
     height: 100vh;
     background-color: var(--background);
 
+    display: flex;
+    align-items: center;
+
     .info {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 }
