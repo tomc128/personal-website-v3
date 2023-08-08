@@ -1,0 +1,28 @@
+@import url('../font/Nohemi-VF.ttf');
+
+* {
+    font-family: 'Nohemi';
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--title-text);
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--subtitle-text);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--subtitle-text);
+}
+
+p {
+    font-weight: 400;
+    color: var(--body-text);
+}
