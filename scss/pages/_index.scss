@@ -8,9 +8,26 @@ section#hero {
     display: flex;
     align-items: center;
 
-    .info {
+    .sticky {
+        position: fixed;
+        top: auto;
+        bottom: auto;
+
         display: flex;
         flex-direction: column;
         gap: 1rem;
+
+        background-color: var(--background);
+
+        h1 {
+            font-size: 6rem;
+        }
     }
+}
+
+
+
+section#about {
+    width: 100vw;
+    height: 100vh;
 }
