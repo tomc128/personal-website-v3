@@ -1,5 +1,17 @@
 @use 'reset';
 
 @use 'colours';
+@use 'typography';
 
-@use 'pages/index'
+@use 'pages/index';
+
+
+section {
+    display: flex;
+    justify-content: center;
+
+    > .content {
+        width: 100%;
+        max-width: 1280px;
+    }
+}
