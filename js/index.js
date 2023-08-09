@@ -3,6 +3,7 @@ let aboutSection;
 let mainContent;
 
 let panelSpacers;
+let panelFades;
 
 console.log(panelSpacers);
 
@@ -12,6 +13,7 @@ window.addEventListener('load', () => {
     heroTitle = document.getElementById('hero-title');
     aboutSection = document.getElementById('about');
     panelSpacers = document.querySelectorAll('#panel .spacer');
+    panelFades = document.querySelectorAll('#panel .fade');
 
     mainContent.addEventListener('scroll', calculateHeroTitleSize, {passive: true});
     
@@ -65,5 +67,12 @@ function calculateHeroTitleSize() {
     panelSpacers.forEach(spacer => {
         let height = (1 - lerp) * spacerMaxHeight;
         spacer.style.height = `${height}px`;
+    });
+    
+    // for each fade element, set its opacity to be a lerp between 0 and 1
+    panelFades.forEach(fade => {
+        fade.style.opacity = `${1 - lerp}`;
+        
+        // TODO: links and nav still affect layout so title is not centred properly
     });
 }

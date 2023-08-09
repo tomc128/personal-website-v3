@@ -1,7 +1,7 @@
 @use 'themes/dark';
 @use 'themes/light';
 
-@each $colour, $value in dark.$colours {
+@each $colour, $value in light.$colours {
     :root {
         // if dark theme is enabled, use the dark theme colours
         // @media (prefers-color-scheme: dark) {
