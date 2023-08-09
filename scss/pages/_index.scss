@@ -46,26 +46,14 @@ section {
 section#hero {
     height: 100vh;
     background-color: var(--background);
-
     display: flex;
-    justify-content: left;
-    
+    flex-direction: column;
 
-    .sticky {
-        position: fixed;
-        height: 100vh;        
-
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-
-        background-color: var(--background);
-
-        h1 {
-            font-size: 6rem;
-        }
+    img {
+        width: 25rem;
+        height: 25rem;
     }
+
 }
 
 
