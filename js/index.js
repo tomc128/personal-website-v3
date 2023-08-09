@@ -2,13 +2,16 @@ let heroTitle;
 let aboutSection;
 let mainContent;
 
-let panelSpacers = document.querySelectorAll('#panel .spacer');
+let panelSpacers;
+
+console.log(panelSpacers);
 
 // on load
 window.addEventListener('load', () => {
     mainContent = document.getElementById('main-content');
     heroTitle = document.getElementById('hero-title');
     aboutSection = document.getElementById('about');
+    panelSpacers = document.querySelectorAll('#panel .spacer');
 
     mainContent.addEventListener('scroll', calculateHeroTitleSize, {passive: true});
     
@@ -56,4 +59,11 @@ function calculateHeroTitleSize() {
     // set font weight based on lerp
     let fontWeight = minFontWeight + (lerp * (maxFontWeight - minFontWeight));
     heroTitle.style.fontWeight = fontWeight;
+
+    // for each spacer, set its height to be a lerp between 0 and max height
+    const spacerMaxHeight = window.innerHeight / 3;
+    panelSpacers.forEach(spacer => {
+        let height = (1 - lerp) * spacerMaxHeight;
+        spacer.style.height = `${height}px`;
+    });
 }
