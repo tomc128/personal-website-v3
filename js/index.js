@@ -6,7 +6,6 @@ let panelSpacers;
 let panelFades;
 
 let panel;
-let rightElement;
 
 console.log(panelSpacers);
 
@@ -79,7 +78,8 @@ function calculateHeroTitleSize() {
     panelFades.forEach(fade => {
         fade.style.opacity = `${1 - lerp}`;
 
-        // TODO: links and nav still affect layout so title is not centred properly
+        // TODO: fix jerk caused by display change
+        fade.style.display = (lerp > 0.999) ? 'none' : 'flex';
     });
 }
 
@@ -95,6 +95,7 @@ document.addEventListener('touchmove', handleTouchMove, { passive: false });
 
 let lastTouchY = 0;
 
+
 function handleScroll(event) {
     // Calculate scrolling offset
     const scrollOffset = event.deltaY;
@@ -102,25 +103,27 @@ function handleScroll(event) {
     // Scroll the right element
     mainContent.scrollTop += scrollOffset;
   
-    // Prevent double scrolling on the right element
+    // Calculate corresponding scroll for the left element based on scrollOffset
+    const leftScroll = (panel.scrollHeight / mainContent.scrollHeight) * scrollOffset;
+    panel.scrollTop += leftScroll;
+
     event.preventDefault();
   }
-  
-  function handleTouchStart(event) {
+
+function handleTouchStart(event) {
     lastTouchY = event.touches[0].clientY;
-  }
-  
-  function handleTouchMove(event) {
+}
+
+function handleTouchMove(event) {
     // Calculate touch scrolling offset
     const touchY = event.touches[0].clientY;
     const scrollOffset = touchY - lastTouchY;
-    
+
     // Scroll the right element
     mainContent.scrollTop -= scrollOffset;
-  
+
     // Prevent double scrolling on the right element
     event.preventDefault();
-  
+
     lastTouchY = touchY;
-  }
-  
+}

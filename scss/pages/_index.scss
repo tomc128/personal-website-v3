@@ -61,12 +61,18 @@ main#main-content {
     overflow-y: auto;
 }
 
-section:not(#panel) {
-    width: 100%;
+section {
+    &:not(#panel) {
+        width: 100%;
 
-    > .content {
-        margin-left: 10rem;
-        margin-right: var(--side-padding);
+        > .content {
+            margin-left: 10rem;
+            margin-right: var(--side-padding);
+        }
+
+        &:not(#hero) {
+            padding-top: 10rem;
+        }
     }
 }
 
@@ -89,8 +95,6 @@ section#hero {
 }
 
 section#about {
-    height: 100vh;
-
     background-color: var(--background);
 }
 
