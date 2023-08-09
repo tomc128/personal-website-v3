@@ -1,4 +1,6 @@
 .project-card {
+    width: 100%;
+
     &:hover {
         background-color: var(--card-background);
         border-top: 1px solid var(--outline);

@@ -28,6 +28,11 @@ section#panel {
 
         .title {
             white-space: nowrap;
+
+            a {
+                text-decoration: none;
+                color: var(--title-text);
+            }
         }
 
         .nav {
@@ -58,7 +63,9 @@ section#panel {
 main#main-content {
     width: 100%;
     min-height: 100vh;
+
     overflow-y: auto;
+    // scroll-behavior: smooth;
 }
 
 section {
@@ -66,6 +73,7 @@ section {
         width: 100%;
 
         > .content {
+            width: 100%;
             margin-left: 10rem;
             margin-right: var(--side-padding);
         }
@@ -99,7 +107,5 @@ section#about {
 }
 
 section#projects {
-    height: 100vh;
-
     background-color: var(--background);
 }
