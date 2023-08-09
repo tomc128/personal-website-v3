@@ -2,6 +2,8 @@ body {
     display: flex;
     align-items: stretch;
     overflow-y: hidden;
+
+    background-color: var(--background);
 }
 
 #main-container {
@@ -10,11 +12,9 @@ body {
     width: 100vw;
 }
 
-section#panel {
+#panel {
     height: 100vh;
     width: auto;
-
-    background-color: var(--background);
 
     > .content {
         display: flex;
@@ -60,7 +60,7 @@ section#panel {
     }
 }
 
-main#main-content {
+#main-content {
     width: 100%;
     min-height: 100vh;
 
@@ -68,7 +68,8 @@ main#main-content {
     // scroll-behavior: smooth;
 }
 
-section {
+section,
+footer {
     &:not(#panel) {
         width: 100%;
 
@@ -86,7 +87,6 @@ section {
 
 section#hero {
     height: 100vh;
-    background-color: var(--background);
     display: flex;
     align-items: center;
 
@@ -102,13 +102,7 @@ section#hero {
     }
 }
 
-section#about {
-    background-color: var(--background);
-}
-
 section#projects {
-    background-color: var(--background);
-
     > .content {
         width: 100%;
 
