@@ -6,6 +6,10 @@
 @use 'pages/index';
 
 
+* {
+    box-sizing: border-box;
+}
+
 section {
     display: flex;
     justify-content: center;

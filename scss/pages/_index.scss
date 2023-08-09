@@ -1,4 +1,3 @@
-
 body {
     display: flex;
     align-items: stretch;
@@ -11,12 +10,12 @@ body {
     width: 100vw;
 }
 
-
 section#panel {
     height: 100vh;
     width: auto;
 
     border: 1px solid red;
+    background-color: var(--background);
 
     > .content {
         display: flex;
@@ -24,9 +23,16 @@ section#panel {
         gap: 1rem;
         justify-content: center;
 
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        margin-left: var(--side-padding);
+
         .title {
-            align-self: flex-start;
             white-space: nowrap;
+        }
+
+        .spacer {
+            height: 10000px;
         }
     }
 }
@@ -35,28 +41,33 @@ main#main-content {
     width: 100%;
     min-height: 100vh;
     overflow-y: auto;
-    // flex-grow: 1;
 }
 
-
-section {
+section:not(#panel) {
     width: 100%;
+
+    > .content {
+        margin-right: var(--side-padding);
+    }
 }
 
 section#hero {
     height: 100vh;
     background-color: var(--background);
     display: flex;
-    flex-direction: column;
+    align-items: center;
 
-    img {
-        width: 25rem;
-        height: 25rem;
+    > .content {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: 25rem;
+            height: 25rem;
+            align-self: flex-end;
+        }
     }
-
 }
-
-
 
 section#about {
     height: 100vh;

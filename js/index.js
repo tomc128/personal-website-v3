@@ -2,6 +2,8 @@ let heroTitle;
 let aboutSection;
 let mainContent;
 
+let panelSpacers = document.querySelectorAll('#panel .spacer');
+
 // on load
 window.addEventListener('load', () => {
     mainContent = document.getElementById('main-content');
@@ -10,10 +12,25 @@ window.addEventListener('load', () => {
 
     mainContent.addEventListener('scroll', calculateHeroTitleSize, {passive: true});
     
-
+    calculateSidePadding();
     calculateHeroTitleSize();
 });
 
+window.addEventListener('resize', calculateSidePadding);
+
+
+function calculateSidePadding() {
+    let width = window.innerWidth;
+    const maxWidth = 1200;
+
+    console.log(width);
+
+    const excess = width - maxWidth;
+    const halfExcess = excess / 2;
+
+    const root = document.querySelector(':root');
+    root.style.setProperty('--side-padding', `${halfExcess}px`);
+}
 
 
 function calculateHeroTitleSize() {
@@ -21,6 +38,8 @@ function calculateHeroTitleSize() {
     let documentHeight = window.innerHeight;
 
     // lerp between 0 and 1 based on how far down the about section is
+    // 0 means end of animation
+    // 1 means start of animation
     let lerp = (aboutSectionTop / documentHeight);
     lerp = Math.min(1, Math.max(0, lerp));
 
