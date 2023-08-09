@@ -6,6 +6,15 @@
 @use 'pages/index';
 
 
+* {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
 section {
     display: flex;
     justify-content: center;

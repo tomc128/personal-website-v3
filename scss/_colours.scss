@@ -4,23 +4,23 @@
 @each $colour, $value in dark.$colours {
     :root {
         // if dark theme is enabled, use the dark theme colours
-        // @media (prefers-color-scheme: dark) {
-        //     --#{$colour}: #{$value};
-        // }
-        
-        // For now, we'll just use the dark theme colours
+        @media (prefers-color-scheme: dark) {
             --#{$colour}: #{$value};
+        }
+        
+        // // For now, we'll just use the dark theme colours
+        //     --#{$colour}: #{$value};
     }
 }
 
-// @each $colour, $value in light.$colours {
-//     :root {
-//         // if light theme is enabled, use the light theme colours
-//         @media (prefers-color-scheme: light) {
-//             --#{$colour}: #{$value};
-//         }
-//     }
-// }
+@each $colour, $value in light.$colours {
+    :root {
+        // if light theme is enabled, use the light theme colours
+        @media (prefers-color-scheme: light) {
+            --#{$colour}: #{$value};
+        }
+    }
+}
 
 
 
