@@ -5,6 +5,7 @@
 
         .content .expanded {
             height: 25rem;
+            opacity: 1;
         }
     }
 
@@ -61,8 +62,11 @@
             gap: 1rem;
 
             height: 0;
+            opacity: 0;
 
-            transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            transition:
+                height 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 
             img {
                 width: 15rem;
