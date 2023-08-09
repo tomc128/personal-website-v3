@@ -2,19 +2,15 @@ let heroTitle;
 let aboutSection;
 
 // on load
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
     heroTitle = document.getElementById('hero-title');
     aboutSection = document.getElementById('about');
+
+    calculateHeroTitleSize();
 });
 
 
-// Get the position of the top of the about section relative to the screen
-// So when its at the top of the screen, its position is 0, and when its
-// at the bottom of the screen, its position is the height of the screen
-
 document.addEventListener('scroll', calculateHeroTitleSize);
-
-window.onload = calculateHeroTitleSize;
 
 
 
