@@ -12,26 +12,31 @@ window.addEventListener('load', (event) => {
 // So when its at the top of the screen, its position is 0, and when its
 // at the bottom of the screen, its position is the height of the screen
 
-document.addEventListener('scroll', (event) => {
+document.addEventListener('scroll', calculateHeroTitleSize);
+
+window.onload = calculateHeroTitleSize;
+
+
+
+function calculateHeroTitleSize() {
     let aboutSectionTop = aboutSection.getBoundingClientRect().top;
     let documentHeight = window.innerHeight;
 
-    console.log(aboutSectionTop);
-    console.log(documentHeight);
-    
-    // aboutSectionTop = 0 => about section is fully in view
-
     // lerp between 0 and 1 based on how far down the about section is
     let lerp = (aboutSectionTop / documentHeight);
-    // clamp lerp between 0 and 1
     lerp = Math.min(1, Math.max(0, lerp));
-    console.log(lerp);
 
+    const maxFontSize = 6;
+    const minFontSize = 3;
 
-    // set text size based on lerp, from 3rem to 6rem
-    let fontSize = 3 + (lerp * 3);
+    const maxFontWeight = 700;
+    const minFontWeight = 600;
+
+    // set text size based on lerp
+    let fontSize = minFontSize + (lerp * (maxFontSize - minFontSize));
     heroTitle.style.fontSize = `${fontSize}rem`;
-
-
-
-});
+    
+    // set font weight based on lerp
+    let fontWeight = minFontWeight + (lerp * (maxFontWeight - minFontWeight));
+    heroTitle.style.fontWeight = fontWeight;
+}
