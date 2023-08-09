@@ -2,11 +2,21 @@
     width: 100%;
     max-width: 100%;
 
-    &:hover {
+    // &:hover {
+    //     background-color: var(--card-background);
+    //     border-top: 1px solid var(--outline);
+
+    //     cursor: pointer;
+
+    //     .content .expanded {
+    //         height: 25rem;
+    //         opacity: 1;
+    //     }
+    // }
+
+    &.expanded {
         background-color: var(--card-background);
         border-top: 1px solid var(--outline);
-
-        cursor: pointer;
 
         .content .expanded {
             height: 25rem;
