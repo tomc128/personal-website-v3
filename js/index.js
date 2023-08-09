@@ -1,4 +1,5 @@
 let heroTitle;
+let heroImage;
 let aboutSection;
 let mainContent;
 
@@ -15,6 +16,7 @@ console.log(panelSpacers);
 window.addEventListener('load', () => {
     mainContent = document.getElementById('main-content');
     heroTitle = document.getElementById('hero-title');
+    heroImage = document.getElementById('hero-image');
     aboutSection = document.getElementById('about');
     panelSpacers = document.querySelectorAll('#panel .spacer');
     panelFades = document.querySelectorAll('#panel .fade');
@@ -82,11 +84,14 @@ function calculateHeroTitleSize() {
         // TODO: fix jerk caused by display change
         fade.style.display = (lerp > 0.999) ? 'none' : 'flex';
     });
+
+    // fade out hero image
+    heroImage.style.opacity = lerp;
 }
 
 function calculateProjectCardExpansion(offset) {
     let threshold = heroTitle.getBoundingClientRect().top;
-    let offsetThreshold = threshold  + window.innerHeight / 5 * 3;
+    let offsetThreshold = threshold + window.innerHeight / 5 * 3;
 
     // if were scrolling down, use the top of the card,
     // if were scrolling up, use the bottom of the card
