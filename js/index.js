@@ -1,16 +1,18 @@
 let heroTitle;
 let aboutSection;
+let mainContent;
 
 // on load
 window.addEventListener('load', () => {
+    mainContent = document.getElementById('main-content');
     heroTitle = document.getElementById('hero-title');
     aboutSection = document.getElementById('about');
 
+    mainContent.addEventListener('scroll', calculateHeroTitleSize, {passive: true});
+    
+
     calculateHeroTitleSize();
 });
-
-
-document.addEventListener('scroll', calculateHeroTitleSize);
 
 
 
