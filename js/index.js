@@ -5,6 +5,9 @@ let mainContent;
 let panelSpacers;
 let panelFades;
 
+let panel;
+let rightElement;
+
 console.log(panelSpacers);
 
 // on load
@@ -15,8 +18,11 @@ window.addEventListener('load', () => {
     panelSpacers = document.querySelectorAll('#panel .spacer');
     panelFades = document.querySelectorAll('#panel .fade');
 
-    mainContent.addEventListener('scroll', calculateHeroTitleSize, {passive: true});
-    
+
+    panel = document.querySelector('#panel');
+
+    mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
+
     calculateSidePadding();
     calculateHeroTitleSize();
 });
@@ -57,7 +63,7 @@ function calculateHeroTitleSize() {
     // set text size based on lerp
     let fontSize = minFontSize + (lerp * (maxFontSize - minFontSize));
     heroTitle.style.fontSize = `${fontSize}rem`;
-    
+
     // set font weight based on lerp
     let fontWeight = minFontWeight + (lerp * (maxFontWeight - minFontWeight));
     heroTitle.style.fontWeight = fontWeight;
@@ -68,11 +74,53 @@ function calculateHeroTitleSize() {
         let height = (1 - lerp) * spacerMaxHeight;
         spacer.style.height = `${height}px`;
     });
-    
+
     // for each fade element, set its opacity to be a lerp between 0 and 1
     panelFades.forEach(fade => {
         fade.style.opacity = `${1 - lerp}`;
-        
+
         // TODO: links and nav still affect layout so title is not centred properly
     });
 }
+
+
+
+
+// Add event listener for mousewheel event on body or left element
+document.addEventListener('mousewheel', handleScroll, { passive: false });
+// Add event listeners for touch events
+document.addEventListener('touchstart', handleTouchStart, { passive: false });
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+
+let lastTouchY = 0;
+
+function handleScroll(event) {
+    // Calculate scrolling offset
+    const scrollOffset = event.deltaY;
+  
+    // Scroll the right element
+    mainContent.scrollTop += scrollOffset;
+  
+    // Prevent double scrolling on the right element
+    event.preventDefault();
+  }
+  
+  function handleTouchStart(event) {
+    lastTouchY = event.touches[0].clientY;
+  }
+  
+  function handleTouchMove(event) {
+    // Calculate touch scrolling offset
+    const touchY = event.touches[0].clientY;
+    const scrollOffset = touchY - lastTouchY;
+    
+    // Scroll the right element
+    mainContent.scrollTop -= scrollOffset;
+  
+    // Prevent double scrolling on the right element
+    event.preventDefault();
+  
+    lastTouchY = touchY;
+  }
+  
