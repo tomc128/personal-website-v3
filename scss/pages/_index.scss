@@ -65,6 +65,7 @@ section:not(#panel) {
     width: 100%;
 
     > .content {
+        margin-left: 10rem;
         margin-right: var(--side-padding);
     }
 }
