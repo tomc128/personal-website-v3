@@ -108,4 +108,12 @@ section#about {
 
 section#projects {
     background-color: var(--background);
+
+    > .content {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
