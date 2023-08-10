@@ -5,6 +5,7 @@ let mainContent;
 
 let panelSpacers;
 let panelFades;
+let panelContent;
 
 let panel;
 
@@ -20,6 +21,8 @@ window.addEventListener('load', () => {
     aboutSection = document.getElementById('about');
     panelSpacers = document.querySelectorAll('#panel .spacer');
     panelFades = document.querySelectorAll('#panel .fade');
+    panelContent = document.querySelector('#panel>.content');
+
     panel = document.querySelector('#panel');
     projectCards = document.querySelectorAll('.project-card');
 
@@ -81,9 +84,15 @@ function calculateHeroTitleSize() {
     panelFades.forEach(fade => {
         fade.style.opacity = `${1 - lerp}`;
 
-        // TODO: fix jerk caused by display change
-        fade.style.display = (lerp > 0.999) ? 'none' : 'flex';
+        // INFO: Ensure that 10rem is updated if the max height of either fade element is bigger
+        // fade.style.display = (lerp > 0.999) ? 'none' : 'flex';
+        // fade.style.height = (lerp > 0.999) ? '0' : 'auto';
+        fade.style.maxHeight = (lerp > 0.999) ? '0' : '10rem';
     });
+    
+    // lerp the panelContent gap between 0 when lerp is 1 and 1rem when lerp is 0
+    panelContent.style.gap = `${1 - lerp}rem`;
+
 
     // fade out hero image
     heroImage.style.opacity = lerp;
