@@ -14,32 +14,33 @@ let panel;
 
 let projectCards;
 
-console.log(panelSpacers);
 
 // on load
-window.addEventListener('load', () => {
-    mainContent = document.getElementById('main-content');
-    heroTitle = document.getElementById('hero-title');
-    heroImage = document.getElementById('hero-image');
-    aboutSection = document.getElementById('about');
-    panelSpacers = document.querySelectorAll('#panel .spacer');
-    panelFades = document.querySelectorAll('#panel .fade');
-    panelContent = document.querySelector('#panel>.content');
+mainContent = document.getElementById('main-content');
+heroTitle = document.getElementById('hero-title');
+heroImage = document.getElementById('hero-image');
+aboutSection = document.getElementById('about');
+panelSpacers = document.querySelectorAll('#panel .spacer');
+panelFades = document.querySelectorAll('#panel .fade');
+panelContent = document.querySelector('#panel>.content');
 
-    panel = document.querySelector('#panel');
-    projectCards = document.querySelectorAll('.project-card');
+panel = document.querySelector('#panel');
+projectCards = document.querySelectorAll('.project-card');
 
 
-    mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
-    // mainContent.addEventListener('scroll',  calculateProjectCardExpansion, { passive: true });
+mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
+mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
+// mainContent.addEventListener('scroll',  calculateProjectCardExpansion, { passive: true });
 
-    calculateSidePadding();
-    calculateHeroTitleSize();
-    calculateContentOverlap();
-});
+
+calculateSidePadding();
+calculateHeroTitleSize();
+calculateContentOverlap();
+
 
 window.addEventListener('resize', calculateSidePadding);
 window.addEventListener('resize', calculateContentOverlap);
+
 
 
 function calculateSidePadding() {
@@ -152,13 +153,10 @@ if (ENABLE_CUSTOM_SCROLLING_BEHAVIOUR) {
 
 }
 else {
-    document.addEventListener('mousewheel', (event) => {
-        // Calculate scrolling offset
+    mainContent.addEventListener('scroll', (event) => {
         const scrollOffset = event.deltaY;
         calculateProjectCardExpansion(scrollOffset);
-
     }, { passive: true });
-
 }
 
 let lastTouchY = 0;

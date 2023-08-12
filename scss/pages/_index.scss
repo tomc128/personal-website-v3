@@ -8,6 +8,21 @@ body {
     background-color: var(--background);
 }
 
+#site-loader {
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: 1000;
+    pointer-events: none;
+
+    background-color: var(--background);
+    opacity: 1;
+    transition: 1s opacity ease-in-out;
+
+    &.loaded {
+        opacity: 0;
+    }
+}
+
 #main-container {
     display: flex;
     height: 100vh;
