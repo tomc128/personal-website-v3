@@ -10,6 +10,8 @@ let panelSpacers;
 let panelFades;
 let panelContent;
 
+let siteLoader;
+
 let panel;
 
 let projectCards;
@@ -23,6 +25,7 @@ aboutSection = document.getElementById('about');
 panelSpacers = document.querySelectorAll('#panel .spacer');
 panelFades = document.querySelectorAll('#panel .fade');
 panelContent = document.querySelector('#panel>.content');
+siteLoader = document.getElementById('site-loader');
 
 panel = document.querySelector('#panel');
 projectCards = document.querySelectorAll('.project-card');
@@ -32,6 +35,9 @@ mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true }
 mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
 // mainContent.addEventListener('scroll',  calculateProjectCardExpansion, { passive: true });
 
+setTimeout(() => {
+    siteLoader.classList.add('loaded');
+}, 100);
 
 calculateSidePadding();
 calculateHeroTitleSize();
