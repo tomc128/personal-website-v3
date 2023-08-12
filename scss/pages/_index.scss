@@ -159,8 +159,16 @@ footer {
 }
 
 @include mixins.mobile-layout {
+    body {
+        overflow-y: auto;
+    }
+
     #main-container {
+        display: block;
         flex-direction: column;
+
+        height: fit-content;
+        overflow-y: scroll;
     }
 
     #panel {
@@ -182,6 +190,8 @@ footer {
 
     #main-content {
         position: relative;
+        height: fit-content;
+        
     }
 
     section,
@@ -203,31 +213,35 @@ footer {
     section#hero {
         display: none;
     }
+
+    footer {
+        margin-bottom: 5rem;
+    }
 }
 
 // Debug
-#panel {
-    outline: 1px solid rgb(255, 0, 0);
-    > .content {
-        outline: 1px solid rgba(255, 0, 0, 0.5);
-    }
-}
+// #panel {
+//     outline: 1px solid rgb(255, 0, 0);
+//     > .content {
+//         outline: 1px solid rgba(255, 0, 0, 0.5);
+//     }
+// }
 
-#main-content {
-    outline: 1px solid rgb(0, 255, 0);
-}
+// #main-content {
+//     outline: 1px solid rgb(0, 255, 0);
+// }
 
-section,
-footer {
-    outline: 1px solid rgb(0, 0, 255);
-    > .content {
-        outline: 1px solid rgba(0, 0, 255, 0.5);
-    }
-}
+// section,
+// footer {
+//     outline: 1px solid rgb(0, 0, 255);
+//     > .content {
+//         outline: 1px solid rgba(0, 0, 255, 0.5);
+//     }
+// }
 
-.project-card {
-    outline: 1px solid rgb(255, 0, 255);
-    > .content {
-        outline: 1px solid rgba(255, 0, 255, 0.5);
-    }
-}
+// .project-card {
+//     outline: 1px solid rgb(255, 0, 255);
+//     > .content {
+//         outline: 1px solid rgba(255, 0, 255, 0.5);
+//     }
+// }
