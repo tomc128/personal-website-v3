@@ -1,5 +1,5 @@
 
-const mobileLayoutWidth = 768;
+const mobileLayoutWidth = 1024;
 
 
 const panel = document.querySelector('#panel');
