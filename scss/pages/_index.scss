@@ -194,6 +194,12 @@ footer {
         }
     }
 
+    section#projects {
+        > .content {
+            align-items: center;
+        }
+    }
+
     section#hero {
         display: none;
     }

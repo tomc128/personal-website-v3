@@ -26,6 +26,9 @@
         }
     }
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
 
     padding: 2rem; // 2rem of padding
@@ -40,7 +43,7 @@
 
     // Contains both main info and expanded info (on hover) arranged vertically
     .content {
-        max-width: 100%;
+        max-width: calc(100% - 4rem); // 100% - 4rem of padding
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -123,12 +126,21 @@
 
 @include mixins.mobile-layout {
     .project-card {
-        margin: 0 -4rem; // Add additional margin on mobile
+        padding: 2rem 0;
 
         .content {
-            .main .thumbnail {
-                width: 4rem;
-                height: 4rem;
+            .main {
+                flex-direction: column;
+
+                .thumbnail {
+                    width: 4rem;
+                    height: 4rem;
+                }
+
+                div.thumbnail {
+                    font-size: 20pt;
+                    line-height: 4rem;
+                }
             }
         }
     }
