@@ -1,3 +1,7 @@
+
+const mobileLayoutWidth = 768;
+
+
 const panel = document.querySelector('#panel');
 const mainContent = document.getElementById('main-content');
 
@@ -36,6 +40,11 @@ window.addEventListener('resize', calculateContentOverlap);
 console.log('%cHey there! 👋🏻', 'font-size: 2rem; font-weight: bold;');
 
 
+function detectLayout() {
+    let width = window.innerWidth;
+    return width < mobileLayoutWidth ? 'mobile' : 'desktop';
+}
+
 
 function calculateSidePadding() {
     let width = window.innerWidth;
@@ -49,11 +58,23 @@ function calculateSidePadding() {
 }
 
 function calculateContentOverlap() {
+    if (detectLayout() === 'mobile') {
+        mainContent.style.paddingLeft = '0';
+        return;
+    }
+
     let panelWidth = panel.getBoundingClientRect().width;
     mainContent.style.paddingLeft = `${panelWidth}px`;
 }
 
 function calculateHeroTitleSize() {
+    if (detectLayout() === 'mobile') {
+        heroTitle.style.fontSize = '3rem';
+        heroTitle.style.fontWeight = '600';
+        heroImage.style.opacity = '1';
+        return;
+    }
+
     let aboutSectionTop = aboutSection.getBoundingClientRect().top;
     let documentHeight = window.innerHeight;
 
@@ -103,6 +124,7 @@ function calculateHeroTitleSize() {
 }
 
 function calculateProjectCardExpansion(event) {
+    
     let threshold = heroTitle.getBoundingClientRect().top;
     let offsetThreshold = threshold + window.innerHeight / 5 * 3;
 

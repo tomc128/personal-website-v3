@@ -28,9 +28,9 @@ body {
     height: 100vh;
     width: 100vw;
 
-    @include mixins.screen-medium {
-        flex-direction: column;
-    }
+    // @include mixins.screen-medium {
+    //     flex-direction: column;
+    // }
 }
 
 #panel {
@@ -38,7 +38,6 @@ body {
     width: auto;
 
     z-index: 100;
-
     pointer-events: none;
 
     > .content {
@@ -58,7 +57,7 @@ body {
 
         .title {
             white-space: nowrap;
-            
+
             a {
                 text-decoration: none;
                 color: var(--title-text);
@@ -102,9 +101,8 @@ body {
     position: absolute;
     inset: 0 0 0 0;
 
-
     overflow-y: auto;
-    scroll-behavior: smooth; // TODO: fix smooth scrolling
+    scroll-behavior: smooth;
 }
 
 section,
@@ -156,5 +154,72 @@ footer {
 
     p:last-child {
         margin-bottom: 0;
+    }
+}
+
+@include mixins.mobile-layout {
+    #main-container {
+        flex-direction: column;
+    }
+
+    #panel {
+        height: auto;
+        width: 100vw;
+
+        > .content {
+            margin: 1rem;
+
+            .title {
+                white-space: normal;
+            }
+
+            .nav {
+                display: none;
+            }
+        }
+    }
+
+    #main-content {
+        position: relative;
+    }
+
+    section,
+    footer {
+        &:not(#panel) {
+            > .content {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    section#hero {
+    }
+}
+
+// Debug
+#panel {
+    outline: 1px solid rgb(255, 0, 0);
+    > .content {
+        outline: 1px solid rgba(255, 0, 0, 0.5);
+    }
+}
+
+#main-content {
+    outline: 1px solid rgb(0, 255, 0);
+}
+
+section,
+footer {
+    outline: 1px solid rgb(0, 0, 255);
+    > .content {
+        outline: 1px solid rgba(0, 0, 255, 0.5);
+    }
+}
+
+.project-card {
+    outline: 1px solid rgb(255, 0, 255);
+    > .content {
+        outline: 1px solid rgba(255, 0, 255, 0.5);
     }
 }
