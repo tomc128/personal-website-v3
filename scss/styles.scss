@@ -23,6 +23,14 @@ html {
     color: var(--on-primary);
 }
 
+a {
+    transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+        color: var(--primary);
+    }
+}
+
 section, footer {
     display: flex;
     justify-content: center;

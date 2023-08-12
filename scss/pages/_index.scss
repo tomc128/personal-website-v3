@@ -69,11 +69,6 @@ body {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-
-            li a {
-                text-decoration: none;
-                color: var(--body-text);
-            }
         }
 
         .links {
@@ -82,9 +77,13 @@ body {
             gap: 1rem;
 
             li a {
-                text-decoration: none;
-                color: var(--body-text);
-                font-size: 24pt;
+                font-size: 18pt;
+
+                transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+                &:hover {
+                    color: var(--primary);
+                }
             }
         }
 
