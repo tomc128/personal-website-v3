@@ -1,51 +1,39 @@
-const ENABLE_CUSTOM_SCROLLING_BEHAVIOUR = false;
+const panel = document.querySelector('#panel');
+const mainContent = document.getElementById('main-content');
+
+const siteLoader = document.getElementById('site-loader');
+
+const heroTitle = document.getElementById('hero-title');
+const heroImage = document.getElementById('hero-image');
+const aboutSection = document.getElementById('about');
+
+const panelSpacers = document.querySelectorAll('#panel .spacer');
+const panelFades = document.querySelectorAll('#panel .fade');
+const panelContent = document.querySelector('#panel>.content');
+const projectCards = document.querySelectorAll('.project-card');
 
 
-let heroTitle;
-let heroImage;
-let aboutSection;
-let mainContent;
-
-let panelSpacers;
-let panelFades;
-let panelContent;
-
-let siteLoader;
-
-let panel;
-
-let projectCards;
-
-
-// on load
-mainContent = document.getElementById('main-content');
-heroTitle = document.getElementById('hero-title');
-heroImage = document.getElementById('hero-image');
-aboutSection = document.getElementById('about');
-panelSpacers = document.querySelectorAll('#panel .spacer');
-panelFades = document.querySelectorAll('#panel .fade');
-panelContent = document.querySelector('#panel>.content');
-siteLoader = document.getElementById('site-loader');
-
-panel = document.querySelector('#panel');
-projectCards = document.querySelectorAll('.project-card');
-
-
-mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
-mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
-// mainContent.addEventListener('scroll',  calculateProjectCardExpansion, { passive: true });
-
-setTimeout(() => {
-    siteLoader.classList.add('loaded');
-}, 100);
-
+// Update all layout values on page load
 calculateSidePadding();
 calculateHeroTitleSize();
 calculateContentOverlap();
 
+// Fade the site loader out after a short delay
+setTimeout(() => {
+    siteLoader.classList.add('loaded');
+}, 100);
 
+// Scroll events, to update scroll-based animations
+mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
+mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
+mainContent.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+
+// Resize events, to update layout based on window size
 window.addEventListener('resize', calculateSidePadding);
 window.addEventListener('resize', calculateContentOverlap);
+
+// Fun message in the console
+console.log('%cHey there! 👋🏻', 'font-size: 2rem; font-weight: bold;');
 
 
 
@@ -64,7 +52,6 @@ function calculateContentOverlap() {
     let panelWidth = panel.getBoundingClientRect().width;
     mainContent.style.paddingLeft = `${panelWidth}px`;
 }
-
 
 function calculateHeroTitleSize() {
     let aboutSectionTop = aboutSection.getBoundingClientRect().top;
@@ -115,13 +102,13 @@ function calculateHeroTitleSize() {
     heroImage.style.opacity = lerp;
 }
 
-function calculateProjectCardExpansion(offset) {
+function calculateProjectCardExpansion(event) {
     let threshold = heroTitle.getBoundingClientRect().top;
     let offsetThreshold = threshold + window.innerHeight / 5 * 3;
 
     // if were scrolling down, use the top of the card,
     // if were scrolling up, use the bottom of the card
-    const isScrollingUp = offset < 0;
+    const isScrollingUp = event.deltaY < 0;
 
     // expand only the project card which is above titleTop.
     // if none are above, expand the first one
@@ -145,61 +132,4 @@ function calculateProjectCardExpansion(offset) {
             card.classList.remove('expanded');
         }
     });
-}
-
-
-
-if (ENABLE_CUSTOM_SCROLLING_BEHAVIOUR) {
-
-    // Add event listener for mousewheel event on body or left element
-    document.addEventListener('mousewheel', handleScroll, { passive: false });
-    // Add event listeners for touch events
-    document.addEventListener('touchstart', handleTouchStart, { passive: false });
-    document.addEventListener('touchmove', handleTouchMove, { passive: false });
-
-}
-else {
-    mainContent.addEventListener('scroll', (event) => {
-        const scrollOffset = event.deltaY;
-        calculateProjectCardExpansion(scrollOffset);
-    }, { passive: true });
-}
-
-let lastTouchY = 0;
-
-
-function handleScroll(event) {
-    // Calculate scrolling offset
-    const scrollOffset = event.deltaY;
-
-    // Scroll the right element
-    mainContent.scrollTop += scrollOffset;
-
-    // Calculate corresponding scroll for the left element based on scrollOffset
-    const leftScroll = (panel.scrollHeight / mainContent.scrollHeight) * scrollOffset;
-    panel.scrollTop += leftScroll;
-
-    calculateProjectCardExpansion(scrollOffset);
-
-    event.preventDefault();
-}
-
-function handleTouchStart(event) {
-    lastTouchY = event.touches[0].clientY;
-}
-
-function handleTouchMove(event) {
-    // Calculate touch scrolling offset
-    const touchY = event.touches[0].clientY;
-    const scrollOffset = touchY - lastTouchY;
-
-    // Scroll the right element
-    mainContent.scrollTop -= scrollOffset;
-
-    // Prevent double scrolling on the right element
-    event.preventDefault();
-
-    calculateProjectCardExpansion(-scrollOffset);
-
-    lastTouchY = touchY;
 }
