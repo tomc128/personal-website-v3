@@ -32,6 +32,9 @@ mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true }
 mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
 mainContent.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
 
+// Scroll events on the document body, which is used for mobile scrolling
+document.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+
 // Resize events, to update layout based on window size
 window.addEventListener('resize', calculateSidePadding);
 window.addEventListener('resize', calculateContentOverlap);
@@ -123,9 +126,9 @@ function calculateHeroTitleSize() {
     heroImage.style.opacity = lerp;
 }
 
-function calculateProjectCardExpansion(event) {
+function calculateProjectCardExpansion(event) {    
+    const threshold = detectLayout() === 'mobile' ? 0 : heroTitle.getBoundingClientRect().top;
     
-    let threshold = heroTitle.getBoundingClientRect().top;
     let offsetThreshold = threshold + window.innerHeight / 5 * 3;
 
     // if were scrolling down, use the top of the card,

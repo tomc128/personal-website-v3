@@ -43,7 +43,7 @@
 
     // Contains both main info and expanded info (on hover) arranged vertically
     .content {
-        max-width: calc(100% - 4rem); // 100% - 4rem of padding
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -129,6 +129,7 @@
         padding: 2rem 0;
 
         .content {
+            max-width: calc(100% - 4rem);
             .main {
                 flex-direction: column;
 
