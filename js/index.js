@@ -1,3 +1,6 @@
+const ENABLE_CUSTOM_SCROLLING_BEHAVIOUR = false;
+
+
 let heroTitle;
 let heroImage;
 let aboutSection;
@@ -32,9 +35,11 @@ window.addEventListener('load', () => {
 
     calculateSidePadding();
     calculateHeroTitleSize();
+    calculateContentOverlap();
 });
 
 window.addEventListener('resize', calculateSidePadding);
+window.addEventListener('resize', calculateContentOverlap);
 
 
 function calculateSidePadding() {
@@ -46,6 +51,11 @@ function calculateSidePadding() {
 
     const root = document.querySelector(':root');
     root.style.setProperty('--side-padding', `${halfExcess}px`);
+}
+
+function calculateContentOverlap() {
+    let panelWidth = panel.getBoundingClientRect().width;
+    mainContent.style.paddingLeft = `${panelWidth}px`;
 }
 
 
@@ -89,7 +99,7 @@ function calculateHeroTitleSize() {
         // fade.style.height = (lerp > 0.999) ? '0' : 'auto';
         fade.style.maxHeight = (lerp > 0.999) ? '0' : '10rem';
     });
-    
+
     // lerp the panelContent gap between 0 when lerp is 1 and 1rem when lerp is 0
     panelContent.style.gap = `${1 - lerp}rem`;
 
@@ -132,12 +142,24 @@ function calculateProjectCardExpansion(offset) {
 
 
 
-// Add event listener for mousewheel event on body or left element
-document.addEventListener('mousewheel', handleScroll, { passive: false });
-// Add event listeners for touch events
-document.addEventListener('touchstart', handleTouchStart, { passive: false });
-document.addEventListener('touchmove', handleTouchMove, { passive: false });
+if (ENABLE_CUSTOM_SCROLLING_BEHAVIOUR) {
 
+    // Add event listener for mousewheel event on body or left element
+    document.addEventListener('mousewheel', handleScroll, { passive: false });
+    // Add event listeners for touch events
+    document.addEventListener('touchstart', handleTouchStart, { passive: false });
+    document.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+}
+else {
+    document.addEventListener('mousewheel', (event) => {
+        // Calculate scrolling offset
+        const scrollOffset = event.deltaY;
+        calculateProjectCardExpansion(scrollOffset);
+
+    }, { passive: true });
+
+}
 
 let lastTouchY = 0;
 

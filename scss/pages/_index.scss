@@ -22,6 +22,10 @@ body {
     height: 100vh;
     width: auto;
 
+    z-index: 100;
+
+    pointer-events: none;
+
     > .content {
         display: flex;
         flex-direction: column;
@@ -31,6 +35,11 @@ body {
         margin-top: 10rem;
         margin-bottom: 10rem;
         margin-left: var(--side-padding);
+
+        a {
+            // Required to make the links clickable (as pointer-events is none for #panel)
+            pointer-events: auto;
+        }
 
         .title {
             white-space: nowrap;
@@ -74,8 +83,14 @@ body {
     width: 100%;
     min-height: 100vh;
 
+    z-index: 10;
+
+    position: absolute;
+    inset: 0 0 0 0;
+
+
     overflow-y: auto;
-    // scroll-behavior: smooth;
+    scroll-behavior: smooth; // TODO: fix smooth scrolling
 }
 
 section,
