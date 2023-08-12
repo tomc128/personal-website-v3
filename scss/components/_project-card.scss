@@ -1,3 +1,5 @@
+@use '../mixins';
+
 .project-card {
     width: 100%;
     max-width: 100%;
@@ -24,6 +26,8 @@
         }
     }
 
+    max-width: 100%;
+
     padding: 2rem; // 2rem of padding
     margin: 0 -2rem; // offset with margin, so text is aligned
     box-sizing: content-box; // hack to ensure width is 100% + 4rem, instead of 100% - 4rem
@@ -36,6 +40,7 @@
 
     // Contains both main info and expanded info (on hover) arranged vertically
     .content {
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -77,6 +82,7 @@
 
                 .tags {
                     display: flex;
+                    flex-wrap: wrap;
                     flex-direction: row;
                     gap: 1rem;
                 }
@@ -110,6 +116,19 @@
                 height: 100%;
                 background-color: lightgrey;
                 border-radius: 4px;
+            }
+        }
+    }
+}
+
+@include mixins.mobile-layout {
+    .project-card {
+        margin: 0 -4rem; // Add additional margin on mobile
+
+        .content {
+            .main .thumbnail {
+                width: 4rem;
+                height: 4rem;
             }
         }
     }

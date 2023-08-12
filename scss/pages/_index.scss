@@ -142,6 +142,7 @@ section#hero {
 section#projects {
     > .content {
         width: 100%;
+        max-width: calc(100% - var(--side-padding) - 10rem);
 
         display: flex;
         flex-direction: column;
@@ -167,7 +168,7 @@ footer {
         width: 100vw;
 
         > .content {
-            margin: 1rem;
+            margin: 5rem 1rem;
 
             .title {
                 white-space: normal;
@@ -194,6 +195,7 @@ footer {
     }
 
     section#hero {
+        display: none;
     }
 }
 
