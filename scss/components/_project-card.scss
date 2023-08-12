@@ -97,6 +97,7 @@
             flex-wrap: nowrap;
             overflow-x: auto;
             gap: 1rem;
+            scroll-snap-type: x mandatory;
 
             width: 100%;
             max-width: 100%;
@@ -114,6 +115,7 @@
                 display: inline-block;
                 flex-shrink: 0;
                 flex-grow: 0;
+                scroll-snap-align: center;
 
                 width: 15rem;
                 height: 100%;
