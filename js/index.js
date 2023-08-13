@@ -19,7 +19,9 @@ const contactSection = document.getElementById('contact');
 const panelSpacers = document.querySelectorAll('#panel .spacer');
 const panelFades = document.querySelectorAll('#panel .fade');
 const panelContent = document.querySelector('#panel>.content');
+
 const projectCards = document.querySelectorAll('.project-card');
+const mainHighlightables = document.querySelectorAll('.main-highlightable');
 
 const aboutLink = document.getElementById('about-link');
 const projectsLink = document.getElementById('projects-link');
@@ -40,11 +42,11 @@ setTimeout(() => {
 // Scroll events, to update scroll-based animations
 mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
 mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
-mainContent.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+mainContent.addEventListener('scroll', calculateCardHighlighting, { passive: true });
 mainContent.addEventListener('scroll', calculateLinkHighlight, { passive: true });
 
 // Scroll events on the document body, which is used for mobile scrolling
-document.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+document.addEventListener('scroll', calculateCardHighlighting, { passive: true });
 document.addEventListener('scroll', calculateLinkHighlight, { passive: true });
 
 // Resize events, to update layout based on window size
@@ -173,7 +175,7 @@ function calculateHeroTitleSize() {
     heroImage.style.opacity = lerp;
 }
 
-function calculateProjectCardExpansion(event) {
+function calculateCardHighlighting(event) {
     const threshold = detectLayout() === 'mobile' ? 0 : heroTitle.getBoundingClientRect().top;
 
     let offsetThreshold = threshold + window.innerHeight / 5 * 3;
@@ -182,26 +184,26 @@ function calculateProjectCardExpansion(event) {
     // if were scrolling up, use the bottom of the card
     const isScrollingUp = event.deltaY < 0;
 
-    // expand only the project card which is above titleTop.
+    // expand only the highlightable which is above titleTop.
     // if none are above, expand the first one
-    let closestCard = projectCards[0];
-    for (let i = 0; i < projectCards.length; i++) {
-        let card = projectCards[i];
+    let closest = mainHighlightables[0];
+    for (let i = 0; i < mainHighlightables.length; i++) {
+        let card = mainHighlightables[i];
         let cardPosition = isScrollingUp
             ? card.getBoundingClientRect().bottom
             : card.getBoundingClientRect().top;
 
         if (cardPosition < offsetThreshold) {
-            closestCard = card;
+            closest = card;
         }
     }
 
-    // expand the closest card
-    projectCards.forEach(card => {
-        if (card === closestCard) {
-            card.classList.add('expanded');
+    // expand the closest highlightable
+    mainHighlightables.forEach(card => {
+        if (card === closest) {
+            card.classList.add('main-highlighted');
         } else {
-            card.classList.remove('expanded');
+            card.classList.remove('main-highlighted');
         }
     });
 }
