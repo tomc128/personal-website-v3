@@ -57,6 +57,9 @@ body {
 
         .title {
             white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
 
             a {
                 text-decoration: none;
@@ -162,6 +165,8 @@ section#hero {
             width: 25rem;
             height: 25rem;
             align-self: flex-end;
+
+            border-radius: 25rem;
         }
     }
 }

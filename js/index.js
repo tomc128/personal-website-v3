@@ -8,6 +8,7 @@ const mainContent = document.getElementById('main-content');
 const siteLoader = document.getElementById('site-loader');
 
 const heroTitle = document.getElementById('hero-title');
+const heroSubtitle = document.getElementById('hero-subtitle');
 const heroImage = document.getElementById('hero-image');
 
 const aboutSection = document.getElementById('about');
@@ -78,15 +79,12 @@ function calculateLinkHighlight() {
         closestLink = contactLink;
     }
 
-    if (!closestLink) {
-        return;
-    }
-
-    // highlight the closest section
     aboutLink.classList.remove('highlighted');
     projectsLink.classList.remove('highlighted');
     skillsLink.classList.remove('highlighted');
     contactLink.classList.remove('highlighted');
+
+    if (!closestLink) return;
 
     closestLink.classList.add('highlighted');
 }
@@ -109,8 +107,14 @@ function calculateContentOverlap() {
         return;
     }
 
-    let panelWidth = panel.getBoundingClientRect().width;
-    mainContent.style.paddingLeft = `${panelWidth}px`;
+    const panelWidth = panel.getBoundingClientRect().width;
+    const heroTitleWidth = heroTitle.getBoundingClientRect().width;
+    const heroSubtitleWidth = heroSubtitle.getBoundingClientRect().width;
+
+    const titleDifference = Math.max(0, heroTitleWidth - heroSubtitleWidth);
+    const leftPadding = panelWidth - titleDifference;
+
+    mainContent.style.paddingLeft = `${leftPadding}px`;
 }
 
 function calculateHeroTitleSize() {
