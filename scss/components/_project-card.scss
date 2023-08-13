@@ -95,7 +95,6 @@
             gap: 1rem;
             scroll-snap-type: x mandatory;
 
-            // align-items: start;
             justify-content: flex-start;
 
             width: 100%;
@@ -105,6 +104,7 @@
             height: 0;
             opacity: 0;
 
+            border-radius: 4px;
             transition:
                 height 1s cubic-bezier(0.075, 0.82, 0.165, 1),
                 opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);

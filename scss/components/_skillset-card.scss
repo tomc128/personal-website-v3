@@ -120,7 +120,7 @@
 }
 
 @include mixins.mobile-layout {
-    .project-card {
+    .skillset-card {
         padding: 2rem 0;
 
         .content {
@@ -135,6 +135,11 @@
 
                 div.thumbnail {
                     font-size: 20pt;
+                    line-height: 4rem;
+                }
+
+                .thumbnail.icon {
+                    font-size: 24pt;
                     line-height: 4rem;
                 }
             }
