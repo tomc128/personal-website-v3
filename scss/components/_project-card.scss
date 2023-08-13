@@ -99,6 +99,9 @@
             gap: 1rem;
             scroll-snap-type: x mandatory;
 
+            // align-items: start;
+            justify-content: flex-start;
+
             width: 100%;
             max-width: 100%;
             min-width: 100%;
