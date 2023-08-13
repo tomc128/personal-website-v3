@@ -1,0 +1,146 @@
+@use '../mixins';
+
+.skillset-card {
+    width: 100%;
+    max-width: 100%;
+
+    &.expanded {
+        background-color: var(--card-background);
+        border-top: 1px solid var(--outline);
+
+        .content .expanded {
+            height: 25rem;
+            opacity: 1;
+        }
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+
+    padding: 2rem; // 2rem of padding
+    margin: 0 -2rem; // offset with margin, so text is aligned
+    box-sizing: content-box; // hack to ensure width is 100% + 4rem, instead of 100% - 4rem
+    border-radius: 8px;
+    border-top: 1px solid transparent;
+
+    transition:
+        background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+        border-top 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    // Contains both main info and expanded info (on hover) arranged vertically
+    .content {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .main {
+            display: flex;
+            flex-direction: row;
+
+            gap: 2rem;
+
+            .thumbnail {
+                flex: 1 0 auto;
+                width: 8rem;
+                height: 8rem;
+                border-radius: 4px;
+            }
+
+            .thumbnail.icon {
+                background-color: var(--primary);
+                font-size: 48pt;
+                color: var(--on-primary);
+                text-align: center;
+                line-height: 9rem; // same as height
+
+                text-shadow:
+                    0px 3.4px 2.7px rgba(0, 0, 0, 0.052),
+                    0px 8.7px 6.9px rgba(0, 0, 0, 0.094),
+                    0px 17.7px 14.2px rgba(0, 0, 0, 0.125),
+                    0px 36.5px 29.2px rgba(0, 0, 0, 0.145),
+                    0px 100px 80px rgba(0, 0, 0, 0.22);
+            }
+
+            .info {
+                flex: 1 1 auto;
+
+                .title {
+                    margin-bottom: 1rem;
+
+                    h3 {
+                        display: inline;
+                        margin-right: 0.5rem;
+                    }
+                }
+
+                .tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: row;
+                    gap: 1rem;
+                }
+            }
+        }
+
+        .expanded {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 1rem;
+            scroll-snap-type: x mandatory;
+
+            // align-items: start;
+            justify-content: flex-start;
+
+            width: 100%;
+            max-width: 100%;
+            min-width: 100%;
+
+            height: 0;
+            opacity: 0;
+
+            transition:
+                height 1s cubic-bezier(0.075, 0.82, 0.165, 1),
+                opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            img,
+            picture {
+                overflow: hidden;
+                display: inline-block;
+                flex-shrink: 0;
+                flex-grow: 0;
+                scroll-snap-align: center;
+
+                height: 100%;
+                background-color: lightgrey;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+@include mixins.mobile-layout {
+    .project-card {
+        padding: 2rem 0;
+
+        .content {
+            max-width: calc(100% - 4rem);
+            .main {
+                flex-direction: column;
+
+                .thumbnail {
+                    width: 4rem;
+                    height: 4rem;
+                }
+
+                div.thumbnail {
+                    font-size: 20pt;
+                    line-height: 4rem;
+                }
+            }
+        }
+    }
+}
