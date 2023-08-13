@@ -188,6 +188,17 @@ section#projects {
     }
 }
 
+section#skills {
+    > .content {
+        width: 100%;
+        max-width: calc(100% - var(--side-padding) - 10rem);
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex;
+    }
+}
+
 footer {
     margin-bottom: 10rem;
 
