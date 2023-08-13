@@ -68,6 +68,10 @@ body {
             display: flex;
             flex-direction: column;
             gap: 1rem;
+
+            a.highlighted {
+                color: var(--primary);
+            }
         }
 
         .links {

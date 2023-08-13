@@ -9,12 +9,21 @@ const siteLoader = document.getElementById('site-loader');
 
 const heroTitle = document.getElementById('hero-title');
 const heroImage = document.getElementById('hero-image');
+
 const aboutSection = document.getElementById('about');
+const projectsSection = document.getElementById('projects');
+const skillsSection = document.getElementById('skills');
+const contactSection = document.getElementById('contact');
 
 const panelSpacers = document.querySelectorAll('#panel .spacer');
 const panelFades = document.querySelectorAll('#panel .fade');
 const panelContent = document.querySelector('#panel>.content');
 const projectCards = document.querySelectorAll('.project-card');
+
+const aboutLink = document.getElementById('about-link');
+const projectsLink = document.getElementById('projects-link');
+const skillsLink = document.getElementById('skills-link');
+const contactLink = document.getElementById('contact-link');
 
 
 // Update all layout values on page load
@@ -31,9 +40,11 @@ setTimeout(() => {
 mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
 mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
 mainContent.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+mainContent.addEventListener('scroll', calculateLinkHighlight, { passive: true });
 
 // Scroll events on the document body, which is used for mobile scrolling
 document.addEventListener('scroll', calculateProjectCardExpansion, { passive: true });
+document.addEventListener('scroll', calculateLinkHighlight, { passive: true });
 
 // Resize events, to update layout based on window size
 window.addEventListener('resize', calculateSidePadding);
@@ -46,6 +57,38 @@ console.log('%cHey there! 👋🏻', 'font-size: 2rem; font-weight: bold;');
 function detectLayout() {
     let width = window.innerWidth;
     return width < mobileLayoutWidth ? 'mobile' : 'desktop';
+}
+
+
+function calculateLinkHighlight() {
+    let heroTitleTop = heroTitle.getBoundingClientRect().top;
+
+    // The last section which is above the hero title should have its link highlighted
+    let closestLink;
+    if (aboutSection.getBoundingClientRect().top < heroTitleTop) {
+        closestLink = aboutLink;
+    }
+    if (projectsSection.getBoundingClientRect().top < heroTitleTop) {
+        closestLink = projectsLink;
+    }
+    if (skillsSection.getBoundingClientRect().top < heroTitleTop) {
+        closestLink = skillsLink;
+    }
+    if (contactSection.getBoundingClientRect().top < heroTitleTop) {
+        closestLink = contactLink;
+    }
+
+    if (!closestLink) {
+        return;
+    }
+
+    // highlight the closest section
+    aboutLink.classList.remove('highlighted');
+    projectsLink.classList.remove('highlighted');
+    skillsLink.classList.remove('highlighted');
+    contactLink.classList.remove('highlighted');
+
+    closestLink.classList.add('highlighted');
 }
 
 
@@ -126,9 +169,9 @@ function calculateHeroTitleSize() {
     heroImage.style.opacity = lerp;
 }
 
-function calculateProjectCardExpansion(event) {    
+function calculateProjectCardExpansion(event) {
     const threshold = detectLayout() === 'mobile' ? 0 : heroTitle.getBoundingClientRect().top;
-    
+
     let offsetThreshold = threshold + window.innerHeight / 5 * 3;
 
     // if were scrolling down, use the top of the card,
