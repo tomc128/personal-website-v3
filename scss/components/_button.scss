@@ -1,0 +1,22 @@
+
+input[type='submit'], a.button {
+    background-color: var(--primary);
+    color: var(--on-primary);
+
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 1rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+        color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1),
+        border 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:hover {
+        background-color: var(--text-field-background);
+        color: var(--primary);
+        border: 1px solid var(--primary);
+    }
+}

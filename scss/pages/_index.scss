@@ -221,6 +221,9 @@ section#contact {
             flex-direction: column;
             gap: 2rem;
 
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+
             .details {
                 width: 100%;
                 display: flex;
@@ -296,14 +299,24 @@ footer {
         }
     }
 
+    section#hero {
+        display: none;
+    }
+
     section#projects {
         > .content {
             align-items: center;
         }
     }
 
-    section#hero {
-        display: none;
+    section#contact {
+        > .content {
+            form {
+                .details {
+                    flex-direction: column;
+                }
+            }
+        }
     }
 
     footer {

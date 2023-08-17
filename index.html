@@ -477,26 +477,48 @@
 
             <section id="contact">
                 <div class="content">
-                    <form action="">
+                    <p>
+                        Feel free to contact me about anything, whether its a question, some feedback, or just to say hi! I try to respond to all messages as soon as possible.
+                    </p>
+
+                    <p>
+                        Alternatively, you can contact me via email at <a href="mailto:tomchapman128@gmail.com">tomchapman128@gmail.com</a>.
+                    </p>
+
+                    <form id="contact-form" action="">
                         <div class="details">
                             <div class="field">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" placeholder="Your name">
+                                <input type="text" name="name" id="name" required placeholder="Your name">
                             </div>
 
                             <div class="field">
                                 <label for="email">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Your email address">
+                                <input type="email" name="email" id="email" required placeholder="Your email address">
                             </div>
                         </div>
 
                         <div class="field">
                             <label for="message">Message</label>
-                            <textarea name="message" id="message" placeholder="Your message"></textarea>
+                            <textarea name="message" id="message" required placeholder="Your message"></textarea>
                         </div>
 
                         <input type="submit" value="Submit">
                     </form>
+
+                    <p>
+                        Nothing in particular to say? Why not send a wave? It'll let me know you've visited my site!
+                    </p>
+                    
+                    <form id="wave-form" action="">
+                        <div class="field">
+                            <label for="name">Name (optional)</label>
+                            <input type="text" name="name" id="name" placeholder="Your name">
+                        </div>
+
+                        <input type="submit" value="👋🏻 Wave">
+                    </form>
+
                 </div>
             </section>
 
