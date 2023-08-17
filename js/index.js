@@ -94,7 +94,7 @@ function calculateLinkHighlight() {
 
 function calculateSidePadding() {
     let width = window.innerWidth;
-    const maxWidth = 1200;
+    const maxWidth = 1400;
 
     const excess = width - maxWidth;
     const halfExcess = excess / 2;
