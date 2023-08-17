@@ -91,7 +91,7 @@
         .expanded {
             display: flex;
             flex-wrap: nowrap;
-            overflow-x: auto;
+            overflow: auto hidden;
             gap: 1rem;
             scroll-snap-type: x mandatory;
 
@@ -117,11 +117,12 @@
                 flex-grow: 0;
                 scroll-snap-align: center;
 
-                height: 100%;
+                height: 25rem; // match height of .main-highlighted project-card above
                 background-color: lightgrey;
                 border-radius: 4px;
             }
         }
+        
     }
 }
 
