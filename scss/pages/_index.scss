@@ -295,6 +295,7 @@ footer {
             > .content {
                 margin-left: 1rem;
                 margin-right: 1rem;
+                max-width: calc(100% - var(--side-padding) - 1rem);
             }
         }
     }

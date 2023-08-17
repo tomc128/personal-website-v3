@@ -94,14 +94,22 @@ function calculateLinkHighlight() {
 
 
 function calculateSidePadding() {
-    let width = window.innerWidth;
-    const maxWidth = 1400;
+    const windowWidth = window.innerWidth;
 
-    const excess = width - maxWidth;
-    const halfExcess = excess / 2;
-
+    const maxPageWidth = 1400;
+    const extraPadding = windowWidth < mobileLayoutWidth ? 20 : 50;
+    
     const root = document.querySelector(':root');
-    root.style.setProperty('--side-padding', `${halfExcess}px`);
+
+    const excess = windowWidth - maxPageWidth;
+
+    if (excess <= 0) {
+        root.style.setProperty('--side-padding', `${extraPadding}px`);
+        return;
+    }
+
+    const halfExcess = excess / 2;
+    root.style.setProperty('--side-padding', `${halfExcess + extraPadding}px`);
 }
 
 function calculateContentOverlap() {
