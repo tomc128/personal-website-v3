@@ -1,11 +1,9 @@
-<center><img src="img/me_2.jpg" width="100" style="border-radius: 50px;"/></center>
+<div align="center">
+  <img src="img/me_2.jpg" width="100" style="border-radius: 50px;"/>
+</div>
 
 <h1 align="center">
-  tomchapman.dev - v3
-  
-  <blockquote style="margin-top: 10px;">
-    <a href="https://www.tomchapman.dev" target="_blank" style="font-size: 85%; text-align: center; display: inline-block; width: 100%;">See it in action</a>
-  </blockquote>
+  <a href="https://www.tomchapman.dev" target="_blank">tomchapman.dev</a> - v3
 </h1>
 
 <p align="center" style="text-align: center;">This is the third iteration of my personal website. It's built using pure HTML, SCSS and JS, and currently hosted using GitHub Pages.</p>
@@ -31,3 +29,9 @@ In a nutshell, you can use my site's code however you like, but you must credit 
 # 🚀 Getting Started
 
 It's just a static site. No bells and whistles, no JavaScript backend. Just slap it on a web server and you're good to go.
+
+
+
+# 📝 Notes
+
+Yes, both [tomchapman.dev](https://www.tomchapman.dev) and [tomchapman.me](https://www.tomchapman.me) point to this website.
