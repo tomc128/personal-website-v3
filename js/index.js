@@ -10,6 +10,7 @@ const siteLoader = document.getElementById('site-loader');
 const heroTitle = document.getElementById('hero-title');
 const heroSubtitle = document.getElementById('hero-subtitle');
 const heroImage = document.getElementById('hero-image');
+const heroGlow = document.getElementById('hero-glow');
 
 const aboutSection = document.getElementById('about');
 const projectsSection = document.getElementById('projects');
@@ -31,7 +32,7 @@ const contactLink = document.getElementById('contact-link');
 
 // Update all layout values on page load
 calculateSidePadding();
-calculateHeroTitleSize();
+calculateHeroScrollEffects();
 calculateContentOverlap();
 
 // Fade the site loader out after a short delay
@@ -40,7 +41,7 @@ setTimeout(() => {
 }, 100);
 
 // Scroll events, to update scroll-based animations
-mainContent.addEventListener('scroll', calculateHeroTitleSize, { passive: true });
+mainContent.addEventListener('scroll', calculateHeroScrollEffects, { passive: true });
 mainContent.addEventListener('scroll', calculateContentOverlap, { passive: true }); // TODO: fix the overlap so content stays same size scrolling from hero -> content?
 mainContent.addEventListener('scroll', calculateCardHighlighting, { passive: true });
 mainContent.addEventListener('scroll', calculateLinkHighlight, { passive: true });
@@ -119,7 +120,7 @@ function calculateContentOverlap() {
     mainContent.style.paddingLeft = `${leftPadding}px`;
 }
 
-function calculateHeroTitleSize() {
+function calculateHeroScrollEffects() {
     if (detectLayout() === 'mobile') {
         heroTitle.style.fontSize = '3rem';
         heroTitle.style.fontWeight = '600';
@@ -170,9 +171,13 @@ function calculateHeroTitleSize() {
     // lerp the panelContent gap between 0 when lerp is 1 and 1rem when lerp is 0
     panelContent.style.gap = `${1 - lerp}rem`;
 
-
-    // fade out hero image
+    // Fade out hero image
     heroImage.style.opacity = lerp;
+
+    // Scale the hero glow
+    const glowMinScale = 0.7;
+    const glowScale = glowMinScale + (lerp * (1 - glowMinScale));
+    heroGlow.style.transform = `scale(${glowScale})`;
 }
 
 function calculateCardHighlighting(event) {
