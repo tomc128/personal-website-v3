@@ -485,7 +485,12 @@
                         Alternatively, you can contact me via email at <a href="mailto:tomchapman128@gmail.com">tomchapman128@gmail.com</a>.
                     </p>
 
-                    <form id="contact-form" action="">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="post">
+                        <input type="hidden" name="access_key" value="21dfbd78-a815-4722-a89e-bfc82048eea4">
+                        <input type="hidden" name="subject" value="New contact form submission">
+                        <input type="hidden" name="from_name" value="Tom Chapman personal website">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                         <div class="details">
                             <div class="field">
                                 <label for="name">Name</label>
@@ -506,18 +511,19 @@
                         <input type="submit" value="Submit">
                     </form>
 
-                    <p>
+                    <!-- Waving is currently disabled until I set up a custom and unlimited form handler -->
+                    <!-- <p>
                         Nothing in particular to say? Why not send a wave? It'll let me know you've visited my site!
                     </p>
                     
-                    <form id="wave-form" action="">
+                    <form id="wave-form" action="submit-wave">
                         <div class="field">
                             <label for="name">Name (optional)</label>
                             <input type="text" name="name" id="name" placeholder="Your name">
                         </div>
 
                         <input type="submit" value="👋🏻 Wave">
-                    </form>
+                    </form> -->
 
                 </div>
             </section>
