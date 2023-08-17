@@ -4,16 +4,6 @@
     align-items: center;
     gap: 2rem;
 
-    .label {
-        display: inline-block;
-        flex-grow: 0;
-        padding: 0.5rem 1rem;
-
-        border-radius: 50rem;
-        background-color: var(--primary-overlay-strong);
-        color: var(--primary);
-    }
-
     .bar {
         position: relative;
         flex-grow: 1;
