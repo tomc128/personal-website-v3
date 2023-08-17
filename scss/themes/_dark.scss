@@ -1,6 +1,5 @@
 $colours: (
     'background': #191214,
-    'background-two': #1f1a1f,
 
     'title-text': #fbbbce,
     'subtitle-text': #c4aab8,
@@ -14,6 +13,10 @@ $colours: (
     'primary-overlay-weak': rgba(255, 72, 127, 0.1),
 
     'card-background': rgba(255, 196, 214, 0.1),
-
     'outline': rgba(255, 196, 214, 0.4),
+
+    'progress-background': rgba(0, 0, 0, 0.5),
+    'progress-foreground': #ff487f,
+
+    'text-field-background': rgba(0, 0, 0, 0.75),
 );
