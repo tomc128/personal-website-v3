@@ -7,7 +7,9 @@ $colours: (
     'link-text': #884257,
 
     'primary': #ff487f,
+    'primary-hover': rgb(255, 150, 182),
     'on-primary': #ffffff,
+    'on-primary-hover': #49192c,
 
     'primary-overlay-strong': rgba(255, 72, 127, 0.2),
     'primary-overlay-weak': rgba(255, 72, 127, 0.1),
@@ -16,5 +18,7 @@ $colours: (
     'outline': rgba(255, 255, 255, 0.8),
 
     'progress-background': rgba(255, 255, 255, 0.2),
-    'progress-foreground': #ff487f
+    'progress-foreground': #ff487f,
+
+    'text-field-background': rgba(255, 255, 255, 0.75),
 );

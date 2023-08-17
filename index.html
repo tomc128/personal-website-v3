@@ -477,9 +477,26 @@
 
             <section id="contact">
                 <div class="content">
-                    <h2>Contact me</h2>
-                    <p>Some contact form goes here...</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae officiis, recusandae in natus labore impedit quia praesentium laborum a eligendi!</p>
+                    <form action="">
+                        <div class="details">
+                            <div class="field">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" placeholder="Your name">
+                            </div>
+
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Your email address">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" placeholder="Your message"></textarea>
+                        </div>
+
+                        <input type="submit" value="Submit">
+                    </form>
                 </div>
             </section>
 

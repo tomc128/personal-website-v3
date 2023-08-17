@@ -159,6 +159,7 @@ footer {
             width: 100%;
             margin-left: 10rem;
             margin-right: var(--side-padding);
+            max-width: calc(100% - var(--side-padding) - 10rem);
         }
 
         &:not(#hero) {
@@ -194,9 +195,6 @@ section#hero {
 
 section#projects {
     > .content {
-        width: 100%;
-        max-width: calc(100% - var(--side-padding) - 10rem);
-
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -205,12 +203,43 @@ section#projects {
 
 section#skills {
     > .content {
-        width: 100%;
-        max-width: calc(100% - var(--side-padding) - 10rem);
-
         display: flex;
         flex-direction: column;
         align-items: flex;
+    }
+}
+
+section#contact {
+    > .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            .details {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+            }
+
+            .field {
+                width: 100%;
+                label {
+                    display: inline-block;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            textarea {
+                height: 10rem;
+            }
+        }
     }
 }
 
