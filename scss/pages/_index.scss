@@ -326,7 +326,18 @@ footer {
     }
 
     section#hero {
-        display: none;
+        display: flex;
+        height: auto;
+
+        > .content {
+            img {
+                width: 15rem;
+                height: 15rem;
+                align-self: center;
+
+                border-radius: 15rem;
+            }
+        }
     }
 
     section#projects {
