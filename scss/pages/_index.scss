@@ -335,6 +335,12 @@ footer {
         }
     }
 
+    section#skills {
+        > .content {
+            align-items: center;
+        }
+    }
+
     section#contact {
         > .content {
             form {
