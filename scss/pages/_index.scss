@@ -51,7 +51,6 @@ body {
     z-index: 100;
     pointer-events: none;
 
-    overflow-x: hidden;
     overflow-y: visible;
 
     > .content {
@@ -171,7 +170,6 @@ body {
     inset: 0 0 0 0;
 
     overflow-y: auto;
-
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
@@ -296,6 +294,8 @@ footer {
     #panel {
         height: auto;
         width: 100vw;
+
+        overflow-x: hidden; // Prevents horizontal scrollbar appearing 
 
         > .content {
             margin: 5rem 1rem;
