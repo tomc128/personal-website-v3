@@ -105,7 +105,7 @@
         }
 
         .expanded {
-            
+
             display: flex;
             flex-wrap: nowrap;
             overflow: auto hidden;
@@ -145,10 +145,7 @@
 
 @include mixins.mobile-layout {
     .project-card {
-        padding: 2rem 0;
-
         .content {
-            margin: 0 2rem;
             max-width: calc(100% - 4rem);
             
             .main {
