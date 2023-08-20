@@ -13,10 +13,10 @@
             opacity: 1;
         }
 
-        .content .info p.extra {
+        .content .main .info .extra {
             height: auto;
             opacity: 1;
-            display: block;
+            margin-bottom: 1.6rem;
         }
     }
 
@@ -95,11 +95,17 @@
                 .extra {
                     height: 0;
                     opacity: 0;
-                    display: none;
+                    margin-bottom: 0;
 
                     transition:
                         height 1s cubic-bezier(0.075, 0.82, 0.165, 1),
                         opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+                }
+
+                .links {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
                 }
             }
         }
