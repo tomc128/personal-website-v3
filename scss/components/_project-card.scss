@@ -151,9 +151,7 @@
 
 @include mixins.mobile-layout {
     .project-card {
-        .content {
-            max-width: calc(100% - 4rem);
-            
+        .content {            
             .main {
                 flex-direction: column;
 
