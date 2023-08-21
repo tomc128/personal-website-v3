@@ -86,12 +86,7 @@
 
 @include mixins.mobile-layout {
     .skillset-card {
-        padding: 2rem 0;
-
         .content {
-            margin: 0 2rem;
-            max-width: calc(100% - 4rem);
-
             .main {
                 flex-direction: column;
 
