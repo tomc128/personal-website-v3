@@ -143,13 +143,54 @@ body {
             flex-direction: row;
             gap: 1rem;
 
-            li a {
-                font-size: 18pt;
+            li.divider {
+                height: 1.5rem;
+                width: 1px;
+                background-color: var(--outline);
+            }
 
-                transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+            li {
+                position: relative;
 
-                &:hover {
-                    color: var(--primary);
+                a {
+                    font-size: 18pt;
+
+                    svg {
+                        width: 16pt;
+                        height: 16pt;
+
+                        fill: var(--link-text);
+
+                        transition: fill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+                        &:hover {
+                            fill: var(--primary);
+                        }
+                    }
+
+                    transition: color 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+                    &:hover {
+                        color: var(--primary);
+                    }
+                }
+
+                .expanded {
+                    display: none;
+                    opacity: 0;
+
+                    position: absolute;
+                    bottom: -2rem;
+                    left: 0;
+                    right: auto;
+                    width: fit-content;
+                    white-space: nowrap;
+                    // right: 0;
+                }
+
+                &:hover .expanded {
+                    display: inline-block;
+                    opacity: 1;
                 }
             }
         }
@@ -295,7 +336,7 @@ footer {
         height: auto;
         width: 100vw;
 
-        overflow-x: hidden; // Prevents horizontal scrollbar appearing 
+        overflow-x: hidden; // Prevents horizontal scrollbar appearing
 
         > .content {
             margin: 5rem 1rem;
