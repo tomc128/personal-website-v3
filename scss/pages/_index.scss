@@ -176,7 +176,6 @@ body {
                 }
 
                 .expanded {
-                    display: none;
                     opacity: 0;
 
                     position: absolute;
@@ -185,11 +184,11 @@ body {
                     right: auto;
                     width: fit-content;
                     white-space: nowrap;
-                    // right: 0;
+
+                    transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
                 }
 
                 &:hover .expanded {
-                    display: inline-block;
                     opacity: 1;
                 }
             }
