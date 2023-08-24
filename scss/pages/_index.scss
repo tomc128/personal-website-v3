@@ -211,7 +211,9 @@ body {
 
     overflow-y: auto;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+
+    // TODO: figure out a way to re-enable smooth scrolling. it currently prevents scrolling to sections via. nav links
+    // scroll-behavior: smooth;
 }
 
 section,
