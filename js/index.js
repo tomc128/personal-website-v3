@@ -55,7 +55,8 @@ window.addEventListener('resize', calculateSidePadding);
 window.addEventListener('resize', calculateContentOverlap);
 
 // Fun message in the console
-console.log('%cHey there! 👋🏻', 'font-size: 2rem; font-weight: bold;');
+console.log('%cHey there! 👋🏻', 'font-size: 2rem; font-weight: bold; color: yellow;');
+console.log('%cIf you\'re interested in the code for this site, you can find it at: https://github.com/tomc128/personal-website-v3', 'color: yellow;')
 
 
 function detectLayout() {
